@@ -1,5 +1,4 @@
-// define variables
-// computerGuess -randomly generated number between 25 and 100
+
 $('.start')on('click', function(){
         start();
     })
@@ -28,8 +27,5 @@ $('#black crystal').click(function() {
 	 if score++ 
 }
 
-$('#compGuess').html(computerGuess);
-	// = score += onyxCrystal;
-	// // console.log(score);
-	// $('#userScore').html(score);
-	// checkWins();
+// $('#compGuess').html(computerGuess);
+	
