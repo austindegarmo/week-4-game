@@ -1,40 +1,156 @@
 <!DOCTYPE html>
 <html>
 <head>
-<img id="black crystal" width="100" height="100" src="https://cdn.dribbble.com/users/79067/screenshots/767265/untitled-1.jpg">
-
-<img id="ruby" src="https://rebornix.gallerycdn.vsassets.io/extensions/rebornix/ruby/0.12.1/1493230640332/Microsoft.VisualStudio.Services.Icons.Default">
-
-<img id="amethyst" src="http://1.bp.blogspot.com/-x3T2bSTd2cM/VetE2QMrQTI/AAAAAAAAFmk/WJTGe9BN0gQ/s1600/Amethyst-min.jpg">
-
-<img src="https://upload.wikimedia.org/wikipedia/en/f/f7/Sapphire.png">
-
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 
 <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-<link rel="stylesheet" type="text/css" href="assets/javascript/game.js">
-
+<!-- <link rel="stylesheet" type="text/css" href="assets/javascript/game.js">
+ -->
 	<title>Crystal Collector</title>
 </head>
 <body>
 
-	<div class="container">
+	<div>
 		<h1>Crystal Collector</h1>
 	</div>
-		
-	<div class="container"> <p>this is for instructions</p></div>
+	
 
-	<div id="computerGuessDiv">
-	<p id=compGuess> </p> </div>
+	<div id="computerGuessDiv"></div>
 
-	<div><p>This is for user score</p></div>
+	<div id="wins"> </div>
+
+	<div id="losses"> </div>
+
+	<div id="scoreboard"> </div>
 			
-	<div id=crystal>this row is for pictures of crystals</div>
+	
 
-	<div id="black crystal">
-		
+	<div>
+		<button id="blackcrystal"> <h1> <img id="black crystal"  src="https://cdn.dribbble.com/users/79067/screenshots/767265/untitled-1.jpg"> </h1> </button>
+
+		<button id="ruby"> <h1> <img id="ruby" src="https://rebornix.gallerycdn.vsassets.io/extensions/rebornix/ruby/0.12.1/1493230640332/Microsoft.VisualStudio.Services.Icons.Default"></h1>
+ 		</button>
+
+ 		<button id="amethyst"> <h1><img id="amethyst" src="http://1.bp.blogspot.com/-x3T2bSTd2cM/VetE2QMrQTI/AAAAAAAAFmk/WJTGe9BN0gQ/s1600/Amethyst-min.jpg"></h1>
+		</button>
+
+		<button id="sapphire"> <img src="https://upload.wikimedia.org/wikipedia/en/f/f7/Sapphire.png">></button>
 	</div>
+		
+
+		<script type="text/javascript">
+			
+
+var blueCrystal = Math.floor(Math.random()*15 + 1);
+
+var redCrystal = Math.floor(Math.random()*15 + 1);
+
+var amethystCrystal = Math.floor(Math.random()*15 + 1);
+
+var onyxCrystal = Math.floor(Math.random()*15 + 1);
+
+var wins = 0;
+
+var losses = 0;
+
+var score = 0;
+
+var computerGuess = Math.floor(Math.random()*100 + 25);	
+
+	$("#blackcrystal").on("click", function() {
+		score = score + onyxCrystal;
+		console.log(score);
+		userScore();
+		winCheck();
+
+	});
+
+	$("#ruby").on("click", function() {
+		score = score + redCrystal;
+		console.log(score);
+		userScore();
+		winCheck();
+
+	});
+
+	$('#amethyst').on("click", function() {
+		score = score + amethystCrystal;
+		console.log(score);
+		userScore();
+		winCheck();
+		
+
+	});
+
+	$('#sapphire').on("click", function() {
+		score = score + blueCrystal;
+		console.log(score);
+		userScore();
+		winCheck();
+		
+	});
+
+	$('#computerGuessDiv').html("<h1>" + computerGuess + "</h1>");
+	$('#wins').html("<h1>" + wins + "</h1>");
+
+
+
+	var userScore = function() {
+
+	 $('#scoreboard').html("<h1> User guess: " + score + "</h1>" + "<h1> Losses: " + losses + "</h1>" + "<h1> Wins: " + wins + "</h1>");
+
+		}
+
+		userScore();
+
+
+
+var winCheck = function() {
+
+		if (computerGuess===score) {
+
+			wins++;
+			reset();
+		}	
+
+		else if (computerGuess < score) {
+			losses++;
+			reset();
+		}
+
+	}
+
+var reset = function() {
+
+		computerGuess = Math.floor((Math.random() *100) + 25);
+		score = 0;
+		userScore();
+		$("#computerGuessDiv").html("<h1>" + computerGuess + "</h1>");
+	}
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		</script>
+	
 
 
 
